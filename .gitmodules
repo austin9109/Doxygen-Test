@@ -1,0 +1,6 @@
+[submodule "submodule/json"]
+	path = submodule/json
+	url = https://github.com/nlohmann/json.git
+[submodule "submodule/magic_enum"]
+	path = submodule/magic_enum
+	url = https://github.com/Neargye/magic_enum.git

@@ -1,0 +1,14 @@
+#pragma once
+
+enum class EMenu
+{
+	EM_WELCOME,
+	EM_LOGIN,
+	EM_REGIST,
+	EM_MAIN,
+	EM_INQUIRE,
+	EM_WITHDRAW,
+	EM_DEPOSIT,
+	EM_EXCHANGE,
+	EM_TRANSFER,
+};

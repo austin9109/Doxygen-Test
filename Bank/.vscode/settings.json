@@ -1,0 +1,16 @@
+{
+    // The prefix that is used for each comment line except for first and last.
+    "doxdocgen.c.commentPrefix": "//! ",
+
+    // The first line of the comment that gets generated. If empty it won't get generated at all.
+    "doxdocgen.c.firstLine": "",
+
+    // The last line of the comment that gets generated. If empty it won't get generated at all.
+    "doxdocgen.c.lastLine": "",
+
+    // Doxygen comment trigger. This character sequence triggers generation of Doxygen comments.
+    "doxdocgen.c.triggerSequence": "//!",
+
+    // Provide intellisense and snippet for doxygen commands
+    "doxdocgen.generic.commandSuggestion": true
+}
