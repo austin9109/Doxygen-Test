@@ -1,0 +1,56 @@
+name: 'Doxygen and Github Pages'
+description: 'Make docs with Doxygen then deploy the generated HTML to GitHub pages'
+branding:
+  icon: "book-open"
+  color: "blue"
+
+inputs:
+  github_token:
+    description: 'A GitHub token for pushing to the repo. Example: https://git.io/passing-token'
+    required: true
+
+  working-directory:
+    description: 'Working directory'
+    required: true
+    default: '.'
+
+  doxyfile-path:
+    description: 'Path of the Doxygen configuration file'
+    required: true
+    default: './Doxyfile'
+
+  html-output-folder:
+    description: 'Folder (relative to working-directory) where Doxygen will generate the HTML build files.'
+    required: true
+    default: 'doc/html'
+
+  branch:
+    description: 'Branch name for pushing GitHub pages files'
+    required: true
+    default: 'gh-pages'
+
+  target_folder:
+    description: 'Directory on the deployment branch for pushing the build files'
+    required: false
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Doxygen Documentation Generation Container
+      shell: bash
+      run: >
+        docker run --rm
+        --workdir ${{ github.workspace }}
+        --volume ${{ github.workspace }}:${{ github.workspace }}:rw
+        ghcr.io/agarwalsaurav/doxygen-arch:latest 
+        "${{ inputs.working-directory }}"
+        "${{ inputs.doxyfile-path }}"
+        "${{ inputs.html-output-folder }}"
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4.5.0
+      with:
+        token: ${{ inputs.github_token }}
+        branch: ${{ inputs.branch }}
+        folder: ${{ inputs.working-directory }}/${{ inputs.html-output-folder }}
+        target-folder: ${{ inputs.target_folder }}
