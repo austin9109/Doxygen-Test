@@ -42,6 +42,9 @@ runs:
     - name: Install Doxygen
       run: sudo apt-get install doxygen -y
       shell: bash
+    - name: Create .nojekyll
+      run: touch ${{ inputs.folder }}/.nojekyll
+      shell: bash
     - name: Run Doxygen Documentation Generation Container
       shell: bash
       run: >
@@ -52,9 +55,6 @@ runs:
         "${{ inputs.working-directory }}"
         "${{ inputs.doxyfile-path }}"
         "${{ inputs.html-output-folder }}"
-    - name: Create .nojekyll
-      run: touch ${{ inputs.folder }}/.nojekyll
-      shell: bash
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4.5.0
       with:
