@@ -17,7 +17,7 @@ inputs:
   doxyfile-path:
     description: 'Path of the Doxygen configuration file'
     required: true
-    default: './Doxyfile'
+    default: 'doc/Doxyfile'
 
   html-output-folder:
     description: 'Folder (relative to working-directory) where Doxygen will generate the HTML build files.'
