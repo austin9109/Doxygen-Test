@@ -42,9 +42,6 @@ runs:
     - name: Install Doxygen
       run: sudo apt-get install doxygen -y
       shell: bash
-    - name: Create .nojekyll
-      run: touch ${{ inputs.folder }}/.nojekyll
-      shell: bash
     - name: Run Doxygen Documentation Generation Container
       shell: bash
       run: >
