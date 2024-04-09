@@ -7,7 +7,7 @@ pages:
   before_script:
     - apt update && apt install -y doxygen graphviz
   script:
-    - doxygen Doc/Doxyfile
+    - doxygen Doxyfile
     - mv Doc/html/ public/
   artifacts:
     paths:
